@@ -6,6 +6,8 @@ import org.example.domain.Expert;
 import org.example.domain.Service;
 import org.example.domain.UnderService;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "order_tb")
 public class Order {
@@ -22,9 +24,12 @@ public class Order {
     @OneToOne
     private Expert expert;
 
-    private Long proposedPrice ;
+    private Long Price ;
 
     private String description ;
+
+    private LocalDate startDay;
+
 
 
 

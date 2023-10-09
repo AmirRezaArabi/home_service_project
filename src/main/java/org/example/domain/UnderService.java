@@ -2,6 +2,8 @@ package org.example.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class UnderService {
     @Id
@@ -11,6 +13,9 @@ public class UnderService {
     private String name ;
     @ManyToOne
     private Service service;
+
+    @ManyToMany(mappedBy = "underServices")
+    private List<Expert> expert;
 
     private String describtion ;
 

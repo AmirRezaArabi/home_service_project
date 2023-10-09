@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.example.domain.base.User;
 import org.example.domain.enums.EXPERT_STATUS;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,8 +19,9 @@ public class Expert extends User {
     private int Score ;
     @OneToOne
     private Service service;
+
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<UnderService> underServices ;
+    private List<UnderService> underServices = new ArrayList<>();
 
 
 }
