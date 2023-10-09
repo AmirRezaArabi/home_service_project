@@ -19,9 +19,9 @@ public class Order {
     private Service service;
     @OneToOne
     private UnderService underService ;
-    @OneToOne
+    @ManyToOne
     private Customer customer ;
-    @OneToOne
+    @ManyToOne
     private Expert expert;
 
     private Long Price ;
@@ -29,6 +29,8 @@ public class Order {
     private String description ;
 
     private LocalDate startDay;
+
+    private String comment;
 
 
 

@@ -20,7 +20,7 @@ public class Expert extends User {
     @OneToOne
     private Service service;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST )
     private List<UnderService> underServices = new ArrayList<>();
 
 

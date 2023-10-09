@@ -12,7 +12,7 @@ public class Wallet {
 
     private Long Balance;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
 

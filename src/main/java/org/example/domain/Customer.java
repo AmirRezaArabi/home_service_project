@@ -17,8 +17,8 @@ public class Customer extends User {
     @OneToOne
     private Wallet wallet ;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private List<CustomerRequest> customerRequests ;
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private List<Order> orders;
 }

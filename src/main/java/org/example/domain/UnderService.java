@@ -11,7 +11,7 @@ public class UnderService {
     private Long id ;
 
     private String name ;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Service service;
 
     @ManyToMany(mappedBy = "underServices")
