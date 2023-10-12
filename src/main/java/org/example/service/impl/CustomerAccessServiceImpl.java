@@ -30,7 +30,7 @@ public class CustomerAccessServiceImpl implements CustomerAccessService {
         Customer customer = customerService.findByUserName(customerUserName).get();
         UnderService underService = underServiceService.findByName(underServiceName).get();
         if (suggestionPrice<underService.getBaseprice())
-            throw new TheSuggestedPriceIsLowerThanBasePriceExveption("The suggested price is lower than the base price")
+            throw new TheSuggestedPriceIsLowerThanBasePriceExveption("The suggested price is lower than the base price");
         Service service = underService.getService();
         CustomerRequest customerRequest = CustomerRequest.builder().underService(underService)
                 .customer(customer).startDay(time).suggestionPrice(suggestionPrice)
