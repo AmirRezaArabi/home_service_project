@@ -5,6 +5,7 @@ import org.example.domain.CustomerRequest;
 import org.example.domain.Service;
 import org.example.domain.UnderService;
 import org.example.domain.enums.REQUEST_STATUS;
+import org.example.exception.TheSuggestedPriceIsLowerThanBasePriceExveption;
 import org.example.service.CustomerAccessService;
 import org.example.service.CustomerRequestService;
 import org.example.service.CustomerService;
@@ -28,6 +29,8 @@ public class CustomerAccessServiceImpl implements CustomerAccessService {
 
         Customer customer = customerService.findByUserName(customerUserName).get();
         UnderService underService = underServiceService.findByName(underServiceName).get();
+        if (suggestionPrice<underService.getBaseprice())
+            throw new TheSuggestedPriceIsLowerThanBasePriceExveption("The suggested price is lower than the base price")
         Service service = underService.getService();
         CustomerRequest customerRequest = CustomerRequest.builder().underService(underService)
                 .customer(customer).startDay(time).suggestionPrice(suggestionPrice)
