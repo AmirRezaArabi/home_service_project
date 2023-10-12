@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import org.example.domain.Customer;
 import org.example.domain.CustomerRequest;
+import org.example.domain.Service;
 import org.example.domain.UnderService;
 import org.example.domain.enums.REQUEST_STATUS;
 import org.example.service.CustomerAccessService;
@@ -27,9 +28,11 @@ public class CustomerAccessServiceImpl implements CustomerAccessService {
 
         Customer customer = customerService.findByUserName(customerUserName).get();
         UnderService underService = underServiceService.findByName(underServiceName).get();
+        Service service = underService.getService();
         CustomerRequest customerRequest = CustomerRequest.builder().underService(underService)
                 .customer(customer).startDay(time).suggestionPrice(suggestionPrice)
-                .description(description).address(address).request_status(REQUEST_STATUS.WAITING_FOR_SUGGESTION).build();
+                .description(description).address(address).request_status(REQUEST_STATUS.WAITING_FOR_SUGGESTION)
+                .service(service).build();
         return customerRequestService.save(customerRequest)!=null;
     }
 }

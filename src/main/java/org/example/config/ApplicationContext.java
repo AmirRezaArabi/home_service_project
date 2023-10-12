@@ -37,6 +37,8 @@ public class ApplicationContext {
 
     private static AdminAccessService adminAccessService;
 
+    private static CustomerAccessService customerAccessService;
+
 
     static {
         entityManager = Persistence.createEntityManagerFactory("test").createEntityManager();
@@ -60,6 +62,8 @@ public class ApplicationContext {
         walletRepository = new WalletRepositoryImpl(entityManager);
         walletService = new WalletServiceImpl(walletRepository);
         adminAccessService = new AdminAccessServiceImpl(expertService, customerService, serviceService, underServiceService);
+        customerAccessService = new CustomerAccessServiceImpl(customerService,underServiceService,customerRequestService);
+
 
 
     }
@@ -102,5 +106,13 @@ public class ApplicationContext {
 
     public static WalletService getWalletService() {
         return walletService;
+    }
+
+    public static AdminAccessService getAdminAccessService() {
+        return adminAccessService;
+    }
+
+    public static CustomerAccessService getCustomerAccessService() {
+        return customerAccessService;
     }
 }

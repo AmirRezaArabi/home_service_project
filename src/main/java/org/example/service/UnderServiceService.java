@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.domain.CustomerRequest;
+import org.example.domain.Service;
 import org.example.domain.UnderService;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface UnderServiceService {
 
     List<UnderService> findAll();
     boolean isValid(UnderService underService);
+    Optional<Service> findByUnderServiceName(String name);
+
 }

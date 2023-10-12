@@ -50,4 +50,12 @@ public class UnderServiceRepositoryImpl implements UnderServiceRepository {
         UnderService underService = (UnderService) query.getSingleResult();
         return Optional.ofNullable(underService);
     }
+
+    @Override
+    public Optional<Service> findByUnderServiceName(String name) {
+        Query query = entityManager.createQuery("from UnderService c where c.service.name =: name");
+        query.setParameter("name",name);
+        Service service = (Service) query.getSingleResult();
+        return Optional.ofNullable(service);
+    }
 }

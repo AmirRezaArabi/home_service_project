@@ -2,10 +2,7 @@ package org.example.service.impl;
 
 import jakarta.validation.ConstraintViolation;
 import org.example.config.ApplicationContext;
-import org.example.domain.Customer;
-import org.example.domain.CustomerRequest;
-import org.example.domain.Suggestion;
-import org.example.domain.UnderService;
+import org.example.domain.*;
 import org.example.exception.TheInputInformationIsNotValidException;
 import org.example.repository.UnderServiceRepository;
 import org.example.service.UnderServiceService;
@@ -88,7 +85,17 @@ public class UnderServiceServiceImpl implements UnderServiceService {
 
     @Override
     public Optional<UnderService> findByName(String name) {
-        return Optional.empty();
+        Optional<UnderService> byId = Optional.empty();
+        try {
+            ApplicationContext.getEntityManager().getTransaction().begin();
+            byId = underServiceRepository.findByName(name);
+            ApplicationContext.getEntityManager().getTransaction().commit();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ApplicationContext.getEntityManager().getTransaction().rollback();
+        }
+        return byId ;
     }
 
     @Override
@@ -117,5 +124,20 @@ public class UnderServiceServiceImpl implements UnderServiceService {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Optional<Service> findByUnderServiceName(String name) {
+        Optional<Service> byId = Optional.empty();
+        try {
+            ApplicationContext.getEntityManager().getTransaction().begin();
+            byId = underServiceRepository.findByUnderServiceName(name);
+            ApplicationContext.getEntityManager().getTransaction().commit();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ApplicationContext.getEntityManager().getTransaction().rollback();
+        }
+        return byId ;
     }
 }

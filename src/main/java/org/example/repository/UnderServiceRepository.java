@@ -22,4 +22,5 @@ public interface UnderServiceRepository {
 
     List<UnderService> findAll();
     Optional<UnderService> findByName(String name);
+    Optional<Service> findByUnderServiceName(String name);
 }

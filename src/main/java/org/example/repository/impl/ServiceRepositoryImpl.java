@@ -48,6 +48,8 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         return Optional.ofNullable(service);
     }
 
+
+
     @Override
     public List<Service> findAll() {
         return entityManager.createQuery("from Service ").getResultList();

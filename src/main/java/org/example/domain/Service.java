@@ -19,9 +19,9 @@ public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id ;
+    @NotNull
     @Column(unique = true)
     private String name ;
-    @NotNull
     @OneToMany(mappedBy = "service" )
     private List<UnderService> underServices = new ArrayList<>() ;
 }

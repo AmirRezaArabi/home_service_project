@@ -19,7 +19,6 @@ public interface ServiceRepository {
 
     Optional<Service> findById(Long id);
 
-
     Optional<Service> findByName(String name);
 
     List<Service> findAll();
