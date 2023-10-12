@@ -1,10 +1,14 @@
 package org.example.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Suggestion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

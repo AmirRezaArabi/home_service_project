@@ -1,15 +1,23 @@
 package org.example.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UnderService {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id ;
-
+    @Column(unique = true)
     private String name ;
     @ManyToOne(cascade = CascadeType.ALL)
     private Service service;
@@ -19,5 +27,5 @@ public class UnderService {
 
     private String describtion ;
 
-    private int baseprice ;
+    private Long baseprice ;
 }
